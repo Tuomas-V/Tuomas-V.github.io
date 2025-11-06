@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="scripts.js"></script>
+        <title>Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="Assets/favicon.ico">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Tuomas Vääräniemi</h1>
+            <p>vaaraniemituomas@gmail.com</p>
+        </div>
+
+        <div class="about">
+            <h2>About me</h2>
+            <p class="div-text">The intent of this website is to display my interests in learning about all things programming and data.</p>
+            <p class="div-text">I'm interested in all kinds of technology and learning new things. I specifically gravitated towards data analysis
+                and engineering so I independently started learning various python libraries and SQL. My previous programming knowledge is mostly
+                in C and C++. I also learned some basic HTML and CSS for this website.</p>
+            <p class="div-text">I'm based in Finland and my education background is in ICT engineering.</p>
+        </div>
+
+        <div class="nav">
+            <h2>Projects</h2>
+            <div class="container">
+                <button class="nav-button" onclick="navPage('project1')" type="button">API</button>
+                <button class="nav-button" onclick="navPage('project2')" type="button">SQL</button>
+                <button class="nav-button" onclick="navPage('project3')" type="button">Dash</button>
+            </div>
+        </div>
+
+        <div id="project1" class="project">
+            <h2>Top 10 US market gainers daily - API dashboard</h2>
+            <p class="div-text">The project pulls data from two different public APIs to display top 10 end of day US market gainers.</p>
+            <p class="div-text">The graph automatically cleans and formats the API data to be displayed and has minimal interactivity
+                to show both the company's name and it's ticker. The data is ordered by growth percentage and the bars also display
+                current stock market price.</p>
+            <div class="img-container">
+                <img class="project-img" src="Assets/output1.png">
+            </div>
+            <p class="div-text">First it pulls top 20 gainers, losers and actively traded tickers from Alpha Vantage API,
+                from which the top 10 gainers are selected. However, this API point does not include the company names,
+                so the tickers of said gainers are then sent to Financial Modeling Prep API to fetch corresponding company names.</p>
+            <p class="div-text">This way the user can select themselves which they want to view.</p>
+            <div class="img-container">
+                <img class="project-img" src="Assets/output2.png">
+            </div>
+            <p class="div-text">I noticed the API sometimes includes extra unnecessary symbols to the tickers, which would result in errors
+                when using them to request the matching company names, so I added a regex filter to remove them.</p>
+            <p class="div-text">The data is handled based on the tickers which are always unique and company-specific, so it doesn't matter
+                even if two companies share similar name. The displayed names are trimmed to maximum of 35 characters so they always fit on
+                the graph.</p>
+            <p class="div-text">As this is end of day data and thus needs to only be updated once per day, it well fits within the request
+                limits of these public APIs.</p></br>
+            <p class="div-text">Data sources:</p>
+            <a class="source-link" href="https://www.alphavantage.co/">Alpha Vantage API</a></br>
+            <a class="source-link" href="https://site.financialmodelingprep.com/">Financial Modeling Prep API</a></br></br></br>
+            <a class="repo-link" href="https://github.com/Tuomas-V/Top-10-US-market-gainers-daily---API-dashboard">Github repo</a>
+        </div>
+
+        <div id="project2" class="project">
+            <h2>Bill cost comparison from database - SQL dashboard</h2>
+            <p class="div-text">This project uses Raahe city open bill data to compare electricity & gas bill costs to heating bills.</p>
+            <p class="div-text">The original data was in the form of excel spreadsheet, which I separated into several CSV files
+                using python. I inserted these files into fitting relational tables in a SQL database. The database is then queried
+                by a python script to display this graph.</p>
+            <p class="div-text">The first clear noticeable trend is the reduced costs during summer. It's much more drastic in
+                heating costs, while electricity & gas spendings increase the most in early winter.</p>
+            <div class="img-container">
+                <img class="project-img" src="Assets/output3.png">
+            </div>
+            <p class="div-text">However, there is a difference in the bill counts;
+                there are over three times the amount of electricity & gas bills in comparison to heating bills from 2024.
+                This initially makes it seem as if more was spent on heating.</p>
+            <p class="div-text">I adjusted the averages relative to bill count and made the graph automatically check for
+                differences in the counts and account for it accordingly.</p>
+            <div class="img-container">
+                <img class="project-img" src="Assets/output4.png">
+            </div>
+            <p class="div-text">The original spreadsheet had a lot of repeating text so I organized it into several relational tables
+                which store information about the companies, locations and accounts to avoid repeating these values on thousands of rows.</p>
+            <p class="div-text">These fields populating the tables are entirely taken from the spreadsheet and categorized as I saw fit.
+                As this is public data, it doesn't contain the more sensitive fields.</p>
+            <div class="img-container">
+                <img class="project-img" src="Assets/database_table.png">
+            </div>
+            <p class="div-text">The graph automatically pulls everything needed from this database, including the year in the title.
+                This database is ran locally using mariadb.</p></br>
+            <p class="div-text">Data sources:</p>
+            <a class="source-link" href="https://www.avoindata.fi">avoindata.fi</a></br></br></br>
+            <a class="repo-link" href="https://github.com/Tuomas-V/Bill-cost-comparison-from-database---SQL-dashboard">Github repo</a>
+        </div>
+
+        <div id="project3" class="project">
+            <h2>Upcoming project: Interactive web app dashboard</h2>
+            <p class="div-text">Likely using python Dash</p>
+        </div>
+
+        <div class="bottom-div">
+            <button class="nav-button" onclick="topPage()" type="button">Back to top</button>
+        </div>
+    </body>
+</html>
