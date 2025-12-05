@@ -97,7 +97,7 @@ body {
     color: var(--bg-dark);
     box-shadow: var(--shadow);
     border: none;
-    font-family: sans-serif;
+    font-family: var(--site-font);
 }
 .nav-button:hover {
     background: var(--secondary);
@@ -106,23 +106,23 @@ body {
 .source-link {
     margin: 8%;
     color: var(--hyperlink);
-    font-family: sans-serif;
+    font-family: var(--site-font);
 }
 .repo-link {
     margin: 5%;
     color: var(--hyperlink);
-    font-family: sans-serif;
+    font-family: var(--site-font);
 }
 h1 {
     color: var(--text);
     font-size: 28px;
-    font-family: sans-serif;
+    font-family: var(--site-font);
 }
 h2 {
     color: var(--text);
     font-size: 20px;
     display: inline;
-    font-family: sans-serif;
+    font-family: var(--site-font);
 }
 p {
     color: var(--text-muted);
